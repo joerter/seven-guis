@@ -6,7 +6,8 @@
    [reitit.frontend :as reitit]
    [clerk.core :as clerk]
    [accountant.core :as accountant]
-   [seven-guis.counter :as counter])
+   [seven-guis.counter :as counter]
+   [seven-guis.temperature-converter :as temperature-converter])
   )
 
 ;; -------------------------
@@ -16,6 +17,7 @@
   (reitit/router
    [["/" :index]
     ["/counter" :counter]
+    ["/temperature-converter" :temperature-converter]
     ["/about" :about]]))
 
 (defn path-for [route & [params]]
@@ -43,6 +45,7 @@
   (case route
     :index #'home-page
     :counter #'counter/page
+    :temperature-converter #'temperature-converter/page
     :about #'about-page
     ))
 
@@ -57,7 +60,9 @@
        [:header
         [:p [:a {:href (path-for :index)} "Home"] " | "
          [:a {:href (path-for :about)} "About seven-guis"] " | "
-         [:a {:href (path-for :counter)} "Counter"]]]
+         [:a {:href (path-for :counter)} "Counter"] " | "
+         [:a {:id "temperature-converter" :href (path-for :temperature-converter)} "Temperature Converter"]
+         ]]
        [page]
        ])))
 
