@@ -8,7 +8,8 @@
    [accountant.core :as accountant]
    [seven-guis.counter :as counter]
    [seven-guis.temperature-converter :as temperature-converter]
-   [seven-guis.flight-booker :as flight-booker])
+   [seven-guis.flight-booker :as flight-booker]
+   [seven-guis.timer :as timer])
   )
 
 ;; -------------------------
@@ -20,6 +21,7 @@
     ["/counter" :counter]
     ["/temperature-converter" :temperature-converter]
     ["/flight-booker" :flight-booker]
+    ["/timer" :timer]
     ["/about" :about]]))
 
 (defn path-for [route & [params]]
@@ -49,6 +51,7 @@
     :counter #'counter/page
     :temperature-converter #'temperature-converter/page
     :flight-booker #'flight-booker/page
+    :timer #'timer/page
     :about #'about-page
     ))
 
@@ -65,8 +68,10 @@
          [:a {:href (path-for :about)} "About seven-guis"] " | "
          [:a {:href (path-for :counter)} "Counter"] " | "
          [:a {:id "temperature-converter" :href (path-for :temperature-converter)} "Temperature Converter"] " | "
-         [:a {:id "flight-booker" :href (path-for :flight-booker)} "Flight Booker"]
-         ]]
+         [:a {:id "flight-booker" :href (path-for :flight-booker)} "Flight Booker"] " | "
+         ]
+         [:a {:id "timer" :href (path-for :timer)} "Timer"]
+        ]
        [page]
        ])))
 
